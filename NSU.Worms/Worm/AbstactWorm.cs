@@ -6,12 +6,12 @@ namespace NSU.Worms.Worm
 {
     abstract class AbstactWorm
     {
-        private Point Coord;
+        protected Point Pos;
         public string Name { get; set; }
 
         public override string ToString()
         {
-            return $"{Name}({Coord.X},{Coord.Y})";
+            return $"{Name}({Pos.X},{Pos.Y})";
         }
         abstract public Direction AskToMove(GameState state);
     }
