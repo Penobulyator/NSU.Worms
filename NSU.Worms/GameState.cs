@@ -7,10 +7,14 @@ namespace NSU.Worms
 {
     class GameState
     {
-        private Dictionary<string, AbstactWorm> Worms { get; }
+        public List<AbstactWorm> Worms { get; }
+        public GameState()
+        {
+            Worms = new List<AbstactWorm>();
+        }
         public override string ToString()
         {
-            string wormsStr = String.Join(',', Worms.Values.ToList());
+            string wormsStr = String.Join(',', Worms);
             return $"Worms:[{wormsStr}]";
         }
     }
