@@ -11,7 +11,7 @@ namespace NSU.Worms.Worm
         private const int SIDE_LENGTH = 5;
         private Point[] Points = { new Point(SIDE_LENGTH, SIDE_LENGTH), new Point(SIDE_LENGTH, -SIDE_LENGTH), new Point(-SIDE_LENGTH, -SIDE_LENGTH), new Point(-SIDE_LENGTH, SIDE_LENGTH) };
         private int CurrentPointIndex = 0;
-        ClockwiseMovingWorm()
+        public ClockwiseMovingWorm()
         {
             TargetPoint = Points.First();
         }

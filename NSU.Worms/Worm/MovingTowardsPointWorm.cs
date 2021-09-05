@@ -20,7 +20,7 @@ namespace NSU.Worms.Worm
                 int difX = TargetPoint.X - Pos.X;
                 int difY = TargetPoint.Y - Pos.Y;
 
-                if (difX > difY)
+                if (Math.Abs(difX) > Math.Abs(difY))
                 {
                     return difX > 0 ? Direction.RIGHT : Direction.LEFT;
                 }
