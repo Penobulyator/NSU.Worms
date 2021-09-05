@@ -7,7 +7,7 @@ using NSU.Worms.Worm;
 using NSU.Worms.Directions;
 using System.IO;
 using System.Drawing;
-namespace NSU.Worms.Worm
+namespace NSU.Worms
 {
     public class WormsSimulator
     {
