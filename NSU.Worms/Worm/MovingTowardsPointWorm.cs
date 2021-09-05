@@ -8,8 +8,8 @@ namespace NSU.Worms.Worm
 {
     abstract class MovingTowardsPointWorm : AbstactWorm
     {
-        private Point TargetPoint;
-        private Direction AskToMoveTowardsPoint()
+        protected Point TargetPoint;
+        protected Direction AskToMoveTowardsPoint()
         {
             if (Pos.Equals(TargetPoint))
             {
