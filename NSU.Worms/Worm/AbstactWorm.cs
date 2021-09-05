@@ -9,18 +9,9 @@ namespace NSU.Worms.Worm
         protected Point Pos;
         public string Name { get; set; }
 
-        public AbstactWorm(Point pos)
-        {
-            Pos = pos;
-        }
-        public AbstactWorm()
-        {
-            Pos = new Point(0, 0);
-        }
-        public AbstactWorm(string str)
-        {
+        public AbstactWorm(string name, Point pos) => (Name, Pos) = (name, pos);
+        public AbstactWorm(string name) : this(name, new Point(0, 0)) { }
 
-        }
         public override string ToString()
         {
             return $"{Name}({Pos.X},{Pos.Y})";

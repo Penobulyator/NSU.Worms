@@ -9,6 +9,8 @@ namespace NSU.Worms.Worm
     abstract class MovingTowardsPointWorm : AbstactWorm
     {
         protected Point TargetPoint;
+        public MovingTowardsPointWorm(string name, Point pos) : base(name, pos) { }
+        public MovingTowardsPointWorm(string name) : base(name) { }
         protected Direction AskToMoveTowardsPoint()
         {
             if (Pos.Equals(TargetPoint))

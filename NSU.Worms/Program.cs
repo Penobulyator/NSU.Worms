@@ -11,7 +11,7 @@ namespace NSU.Worms
         static public void Main(String[] args)
         {
             GameState state = new GameState();
-            state.Worms.Add(new ClockwiseMovingWorm());
+            state.Worms.Add(new ClockwiseMovingWorm("John"));
             WormsSimulator simulator = new WormsSimulator(state);
             simulator.Run();
         }
