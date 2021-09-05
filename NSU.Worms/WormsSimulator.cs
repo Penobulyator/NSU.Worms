@@ -19,16 +19,12 @@ namespace NSU.Worms.Worm
         }
 
 
-        public void Run()
+        public void Run(Action<GameState> callback)
         {
-            using (StreamWriter sw = File.CreateText("output.txt"))
+            for (int i = 0; i < ITERATIONS; i++)
             {
-                for (int i = 0; i < ITERATIONS; i++)
-                {
-                    sw.WriteLine(State);
-
-                    MoveWorms();
-                }
+                callback(State);
+                MoveWorms();
             }
         }
 

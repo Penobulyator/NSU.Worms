@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NSU.Worms.Worm;
+using System.IO;
 namespace NSU.Worms
 {
     class Program
@@ -13,7 +14,16 @@ namespace NSU.Worms
             GameState state = new GameState();
             state.Worms.Add(new ClockwiseMovingWorm("John"));
             WormsSimulator simulator = new WormsSimulator(state);
-            simulator.Run();
+
+            using (StreamWriter sw = new StreamWriter("output.txt"))
+            {
+                simulator.Run(
+                    (state)=>
+                    {
+                        sw.WriteLine(state);
+                    }
+                );
+            }
         }
     }
 }
