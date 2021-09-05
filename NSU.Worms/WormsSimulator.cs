@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NSU.Worms.Worm;
+using NSU.Worms.Directions;
 using System.IO;
 namespace NSU.Worms.Worm
 {
@@ -24,14 +25,21 @@ namespace NSU.Worms.Worm
                 for (int i = 0; i < ITERATIONS; i++)
                 {
                     sw.WriteLine(State);
-                    foreach (AbstactWorm worm in State.Worms)
-                    {
-                        Direction direction = worm.AskToMove(State);
-                        //TODO: Check for collisions
-                        worm.Move(direction);
-                    }
+
+                    MoveWorms();
                 }
             }
+        }
+
+        private void MoveWorms()
+        {
+            foreach (AbstactWorm worm in State.Worms)
+            {
+                Direction direction = worm.AskToMove(State);
+                //TODO: Check for collisions
+                worm.Move(direction);
+            }
+
         }
     }
 }

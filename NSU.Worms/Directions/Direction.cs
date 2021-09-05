@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NSU.Worms
+namespace NSU.Worms.Directions
 {
-    enum Direction
+    interface Direction
     {
-        UP,
-        DOWN,
-        RIGHT,
-        LEFT,
-        NONE
+        public int getX();
+        public int getY();
     }
 }

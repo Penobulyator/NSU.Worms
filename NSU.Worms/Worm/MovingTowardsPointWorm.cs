@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using NSU.Worms.Directions;
 namespace NSU.Worms.Worm
 {
     abstract class MovingTowardsPointWorm : AbstactWorm
@@ -15,7 +16,7 @@ namespace NSU.Worms.Worm
         {
             if (Pos.Equals(TargetPoint))
             {
-                return Direction.NONE;
+                return null;
             }
             else
             {
@@ -24,11 +25,11 @@ namespace NSU.Worms.Worm
 
                 if (Math.Abs(difX) > Math.Abs(difY))
                 {
-                    return difX > 0 ? Direction.RIGHT : Direction.LEFT;
+                    return difX > 0 ? new RightDirection() : new LeftDirection();
                 }
                 else
                 {
-                    return difY > 0 ? Direction.UP : Direction.DOWN;
+                    return difY > 0 ? new UpDirection() : new DownDirection();
                 }
             }
         }

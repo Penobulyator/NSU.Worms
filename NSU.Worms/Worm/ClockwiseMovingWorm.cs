@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using NSU.Worms.Directions;
 namespace NSU.Worms.Worm
 {
     class ClockwiseMovingWorm : MovingTowardsPointWorm
@@ -22,7 +23,7 @@ namespace NSU.Worms.Worm
         public override Direction AskToMove(GameState state)
         {
             Direction direction = AskToMoveTowardsPoint();
-            if (direction != Direction.NONE)
+            if (direction != null)
             {
                 return direction;
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
+using NSU.Worms.Directions;
 namespace NSU.Worms.Worm
 {
     abstract class AbstactWorm
@@ -18,25 +19,8 @@ namespace NSU.Worms.Worm
         }
         public void Move(Direction direction)
         {
-            int difX = 0;
-            int difY = 0;
-            switch (direction)
-            {
-                case Direction.UP:
-                    difY = 1;
-                    break;
-                case Direction.DOWN:
-                    difY = -1;
-                    break;
-                case Direction.RIGHT:
-                    difX = 1;
-                    break;
-                case Direction.LEFT:
-                    difX = -1;
-                    break;
-            }
-            Pos.X += difX;
-            Pos.Y += difY;
+            Pos.X += direction.getX();
+            Pos.Y += direction.getY();
         }
         
         abstract public Direction AskToMove(GameState state);
