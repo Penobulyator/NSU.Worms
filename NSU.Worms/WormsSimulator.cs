@@ -9,7 +9,7 @@ using System.IO;
 using System.Drawing;
 namespace NSU.Worms.Worm
 {
-    class WormsSimulator
+    public class WormsSimulator
     {
         private GameState State;
         private const int ITERATIONS = 100;

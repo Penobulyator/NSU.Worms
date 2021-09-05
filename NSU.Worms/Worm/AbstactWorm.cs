@@ -5,7 +5,7 @@ using System.Drawing;
 using NSU.Worms.Directions;
 namespace NSU.Worms.Worm
 {
-    abstract class AbstactWorm
+    public abstract class AbstactWorm
     {
         public Point Pos { get; set; }
         public string Name { get; }

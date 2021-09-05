@@ -7,7 +7,7 @@ using System.Drawing;
 using NSU.Worms.Directions;
 namespace NSU.Worms.Worm
 {
-    abstract class MovingTowardsPointWorm : AbstactWorm
+    public abstract class MovingTowardsPointWorm : AbstactWorm
     {
         protected Point TargetPoint;
         public MovingTowardsPointWorm(string name, Point pos) : base(name, pos) { }

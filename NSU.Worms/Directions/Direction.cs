@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NSU.Worms.Directions
 {
-    interface Direction
+    public interface Direction
     {
         public int getX();
         public int getY();

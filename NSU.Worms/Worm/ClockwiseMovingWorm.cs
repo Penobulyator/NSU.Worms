@@ -7,7 +7,7 @@ using System.Drawing;
 using NSU.Worms.Directions;
 namespace NSU.Worms.Worm
 {
-    class ClockwiseMovingWorm : MovingTowardsPointWorm
+    public class ClockwiseMovingWorm : MovingTowardsPointWorm
     {
         private const int SIDE_LENGTH = 5;
         private Point[] Points = { new Point(SIDE_LENGTH, SIDE_LENGTH), new Point(SIDE_LENGTH, -SIDE_LENGTH), new Point(-SIDE_LENGTH, -SIDE_LENGTH), new Point(-SIDE_LENGTH, SIDE_LENGTH) };

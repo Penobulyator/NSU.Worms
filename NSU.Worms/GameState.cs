@@ -5,9 +5,9 @@ using NSU.Worms.Worm;
 using System.Linq;
 namespace NSU.Worms
 {
-    class GameState
+    public class GameState
     {
-        public List<AbstactWorm> Worms { get; }
+        public List<AbstactWorm> Worms { get; set; }
         public GameState()
         {
             Worms = new List<AbstactWorm>();
