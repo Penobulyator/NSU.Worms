@@ -7,8 +7,8 @@ namespace NSU.Worms.Worm
 {
     abstract class AbstactWorm
     {
-        protected Point Pos;
-        public string Name { get; set; }
+        public Point Pos { get; set; }
+        public string Name { get; }
 
         public AbstactWorm(string name, Point pos) => (Name, Pos) = (name, pos);
         public AbstactWorm(string name) : this(name, new Point(0, 0)) { }
@@ -19,8 +19,7 @@ namespace NSU.Worms.Worm
         }
         public void Move(Direction direction)
         {
-            Pos.X += direction.getX();
-            Pos.Y += direction.getY();
+            Pos = new Point(Pos.X + direction.getX(), Pos.Y + direction.getY());
         }
         
         abstract public Direction AskToMove(GameState state);

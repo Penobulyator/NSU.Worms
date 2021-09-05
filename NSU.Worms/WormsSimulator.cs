@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NSU.Worms.Worm;
 using NSU.Worms.Directions;
 using System.IO;
+using System.Drawing;
 namespace NSU.Worms.Worm
 {
     class WormsSimulator
@@ -36,10 +37,26 @@ namespace NSU.Worms.Worm
             foreach (AbstactWorm worm in State.Worms)
             {
                 Direction direction = worm.AskToMove(State);
-                //TODO: Check for collisions
-                worm.Move(direction);
+
+                if (!WormWillCollide(worm, direction))
+                {
+                    worm.Move(direction);
+                }
             }
 
+        }
+
+        private bool WormWillCollide(AbstactWorm worm, Direction direction)
+        {
+            Point nextPoint = new Point(worm.Pos.X + direction.getX(), worm.Pos.Y + direction.getY());
+
+            foreach (AbstactWorm otherWorm in State.Worms)
+            {
+                if (!otherWorm.Equals(worm) && otherWorm.Pos.Equals(nextPoint))
+                    return true;
+            }
+
+            return false;
         }
     }
 }
