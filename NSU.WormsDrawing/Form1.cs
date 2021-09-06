@@ -48,31 +48,35 @@ namespace NSU.WormsDrawing
             }
             );
         }
-        private int ConvertCoord(int cord)
+        private int ConvertXCoord(int cord)
         {
             return (cord + CellsCount / 2) * CellSize;
         }
+        private int ConvertYCoord(int cord)
+        {
+            return -(cord - CellsCount / 2) * CellSize;
+        }
         private void DrawState(GameState state, Graphics graphics)
         {
-            Brush wormBrush = new SolidBrush(Color.Brown);
-            foreach(AbstactWorm worm in state.Worms)
-            {
-                int x = ConvertCoord(worm.Pos.X);
-                int y = ConvertCoord(worm.Pos.Y);
-                graphics.FillRectangle(wormBrush, x + 1, y + 1, CellSize - 1, CellSize - 1);
-            }
+            drawWorms(new SolidBrush(Color.Brown), state.Worms, graphics);
 
             Thread.Sleep(100);
 
-            Brush whiteBrush = new SolidBrush(Color.White);
-            foreach (AbstactWorm worm in state.Worms)
+            drawWorms(new SolidBrush(Color.White), state.Worms, graphics);
+
+        }
+
+        private void drawWorms(Brush brush, List<AbstactWorm> worms, Graphics graphics)
+        {
+            foreach (AbstactWorm worm in worms)
             {
-                int x = ConvertCoord(worm.Pos.X);
-                int y = ConvertCoord(worm.Pos.Y);
-                graphics.FillRectangle(whiteBrush, x + 1, y + 1, CellSize - 1, CellSize - 1);
+                int x = ConvertXCoord(worm.Pos.X);
+                int y = ConvertYCoord(worm.Pos.Y);
+                graphics.FillRectangle(brush, x + 1, y + 1, CellSize - 1, CellSize - 1);
             }
 
         }
+
         private WormsSimulator GetSimulator()
         {
             GameState state = new GameState();
