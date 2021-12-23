@@ -11,12 +11,14 @@ namespace NSU.WormsGame.Entities.Worm
     public abstract class MovingTowardsPointWorm : AbstactWorm
     {
         protected Point TargetPoint;
-        public MovingTowardsPointWorm(string name, Point pos, int hp) : base(name, pos, hp) { }
+        public MovingTowardsPointWorm(string name, Point pos, int hp) : base(name, pos, hp) { 
+            TargetPoint = pos;
+        }
         protected WormAction AskToMoveTowardsPoint()
         {
             if (Pos.Equals(TargetPoint))
             {
-                return null;
+                return new WormAction(null, false);
             }
             else
             {

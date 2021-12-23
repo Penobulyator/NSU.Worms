@@ -18,7 +18,7 @@ namespace NSU.WormsGame.Entities.Worm
 
         public override string ToString()
         {
-            return $"{Name}({Pos.X},{Pos.Y})";
+            return $"{Name}-{HP}({Pos.X},{Pos.Y})";
         }
         public void Move(Direction direction)
         {

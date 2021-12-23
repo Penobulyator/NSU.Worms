@@ -23,7 +23,9 @@ namespace NSU.WormsGame
             for (int i = 0; i < ITERATIONS; i++)
             {
                 callback(State);
+                PlaceFood();
                 PerformWormsActions();
+                ReduceAndCheckHp();
             }
         }
 
@@ -61,15 +63,9 @@ namespace NSU.WormsGame
                 {
                     worm.Move(action.Direction);
 
-                    for (int i = 0; i < State.Food.Count; i++)
-                    {
-                        if (State.Food[i].Equals(worm.Pos))
-                        {
-                            State.Food.RemoveAt(i);
-                            worm.HP += 10;
-                            break;
-                        }
-                    }
+                    int foodEaten = State.Food.RemoveAll((food) => food.Pos.Equals(nextPoint));
+                    if (foodEaten != 0)
+                        worm.HP += 10;
                 }
             }
 
@@ -90,5 +86,26 @@ namespace NSU.WormsGame
             }
         }
 
+        private void ReduceAndCheckHp()
+        {
+            State.Food.RemoveAll((food) => --food.HP == 0);
+            State.Worms.RemoveAll((worm) => --worm.HP == 0);
+        }
+
+        private void PlaceFood()
+        {
+            Food food = new Food(State.Food);
+
+            foreach(AbstactWorm worm in State.Worms)
+            {
+                if (worm.Pos.Equals(food.Pos))
+                {
+                    worm.HP += 10;
+                    return;
+                }
+            }
+
+            State.Food.Add(food);
+        }
     }
 }

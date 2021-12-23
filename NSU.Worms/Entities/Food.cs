@@ -56,5 +56,10 @@ namespace NSU.WormsGame.Entities
             return (int)Math.Round(randNormal);
 
         }
+
+        public override string ToString()
+        {
+            return $"({Pos.X}, {Pos.Y})";
+        }
     }
 }

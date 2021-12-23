@@ -12,6 +12,7 @@ namespace NSU.WormsGame.Simulation
         public GameState()
         {
             Worms = new List<AbstactWorm>();
+            Food = new List<Food>();
         }
         public bool PointIsWorm(Point point)
         {
@@ -35,7 +36,8 @@ namespace NSU.WormsGame.Simulation
         public override string ToString()
         {
             string wormsStr = string.Join(',', Worms);
-            return $"WormsGame:[{wormsStr}]";
+            string foodStr = string.Join(',', Food);
+            return $"Worms:[{wormsStr}],Food:[{foodStr}]";
         }
     }
 }

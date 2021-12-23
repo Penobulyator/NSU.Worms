@@ -13,13 +13,15 @@ namespace NSU.WormsGame
         {
             GameState game = new GameState();
             game.Worms = new List<AbstactWorm> {
-                new ClockwiseMovingWorm("bob", new System.Drawing.Point(5, 5), 20)
+                new MovingTowardsFoodWorm("bob", new System.Drawing.Point(5, 5), 20)
             };
 
             WormsSimulator wormsSimulator = new WormsSimulator(game);
             wormsSimulator.Run((gameState) =>
             {
-                Console.WriteLine(gameState.ToString());
+                String str = gameState.ToString();
+                Console.WriteLine(str);
+                return;
             });
         }
     }
