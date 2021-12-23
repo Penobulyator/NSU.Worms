@@ -1,22 +1,21 @@
 ﻿using System.Drawing;
 using System.Collections.Generic;
-using NSU.WormsGame.Entities.Worm;
 using NSU.WormsGame.Entities;
 
 namespace NSU.WormsGame.Simulation
 {
     public class GameState
     {
-        public List<AbstactWorm> Worms { get; set; }
+        public List<Worm> Worms { get; set; }
         public List<Food> Food { get; set; }
         public GameState()
         {
-            Worms = new List<AbstactWorm>();
+            Worms = new List<Worm>();
             Food = new List<Food>();
         }
         public bool PointIsWorm(Point point)
         {
-            foreach (AbstactWorm worm in Worms)
+            foreach (Worm worm in Worms)
             {
                 if (worm.Pos.Equals(point))
                     return true;

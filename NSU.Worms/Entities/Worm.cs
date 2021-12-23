@@ -5,16 +5,16 @@ using System.Drawing;
 using NSU.WormsGame.Simulation;
 using NSU.WormsGame.Entities.Directions;
 
-namespace NSU.WormsGame.Entities.Worm
+namespace NSU.WormsGame.Entities
 {
-    public abstract class AbstactWorm : ICloneable
+    public class Worm : ICloneable
     {
         public Point Pos { get; set; }
         public string Name { get; set; }
 
         public int HP { get; set; }
 
-        public AbstactWorm(string name, Point pos, int hp) => (Name, Pos, HP) = (name, pos, hp);
+        public Worm(string name, Point pos, int hp) => (Name, Pos, HP) = (name, pos, hp);
 
         public override string ToString()
         {
@@ -24,8 +24,6 @@ namespace NSU.WormsGame.Entities.Worm
         {
             Pos = direction.getNextPoint(Pos);
         }
-
-        abstract public WormAction AskToMove(GameState state);
 
         public object Clone()
         {

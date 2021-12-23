@@ -1,39 +1,62 @@
-﻿using NSU.WormsGame.Entities;
-using NSU.WormsGame.Entities.Directions;
-using NSU.WormsGame.Entities.Worm;
+﻿using Microsoft.Extensions.Hosting;
+using NSU.WormsGame.Entities;
 using NSU.WormsGame.Simulation;
 using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using NSU.WormsGame.Services.WormActionGeneratorService;
+using Microsoft.Extensions.DependencyInjection;
 using System.Drawing;
 
-namespace NSU.WormsGame
+namespace NSU.WormsGame.Services
 {
-    public class WormsSimulator
+    internal class WormsSimulatorService : IHostedService
     {
         private GameState State;
-        private const int ITERATIONS = 100;
-        public WormsSimulator(GameState initialState)
+        private bool Running = true;
+        private IServiceProvider ServiceProvider;
+
+        public WormsSimulatorService(IServiceProvider sp) => ServiceProvider = sp;
+
+        public Task StartAsync(CancellationToken cancellationToken)
         {
-            State = initialState;
+            Task.Run(RunAsync);
+            return Task.CompletedTask;
         }
 
-
-        public void Run(Action<GameState> callback)
+        public Task StopAsync(CancellationToken cancellationToken)
         {
-            for (int i = 0; i < ITERATIONS; i++)
+            Running = false;
+            return Task.CompletedTask;
+        }
+
+        private void RunAsync()
+        {
+            InitState();
+            while (Running)
             {
-                callback(State);
                 PlaceFood();
                 PerformWormsActions();
                 ReduceAndCheckHp();
+                ServiceProvider.GetService<IGameStateWriterService>().WriteState(State);
+
+                Thread.Sleep(500);
             }
+        }
+
+        private void InitState()
+        {
+            State = new GameState();
+            State.Worms = new List<Worm> { new Worm("bob", new Point(0, 0), 20) };
         }
 
         private void PerformWormsActions()
         {
-            foreach (AbstactWorm worm in State.Worms)
+            foreach (Worm worm in State.Worms)
             {
-                WormAction action = worm.AskToMove(State);
+                WormAction action= ServiceProvider.GetService<IWormActionGeneratorService>().GenerateWormAction(worm, State);
 
                 if (action.IsDoNothing())
                     continue;
@@ -50,10 +73,10 @@ namespace NSU.WormsGame
 
                     if (worm.HP > 10)
                     {
-                        AbstactWorm newWorm = (AbstactWorm)worm.Clone();
+                        Worm newWorm = (Worm)worm.Clone();
                         newWorm.Pos = nextPoint;
                         newWorm.HP = 10;
-                        newWorm.Name = GetUniqueWormName(worm.Name);
+                        newWorm.Name = ServiceProvider.GetService<IWormNamesGeneratorService>().GenerateWormName(worm.Name, State.Worms);
                         State.Worms.Add(newWorm);
 
                         worm.HP -= 10;
@@ -71,21 +94,6 @@ namespace NSU.WormsGame
 
         }
 
-        private String GetUniqueWormName(String baseName)
-        {
-            int tryCount = 0;
-
-            while (true)
-            {
-                String newName = baseName + tryCount;
-                AbstactWorm worm = State.Worms.Find(worm => worm.Name.Equals(newName));
-                if (worm == null)
-                    return newName;
-
-                tryCount++;
-            }
-        }
-
         private void ReduceAndCheckHp()
         {
             State.Food.RemoveAll((food) => --food.HP == 0);
@@ -94,9 +102,9 @@ namespace NSU.WormsGame
 
         private void PlaceFood()
         {
-            Food food = new Food(State.Food);
+            Food food = ServiceProvider.GetService<IFoodGeneratorService>().GenerateFood(State.Food);
 
-            foreach(AbstactWorm worm in State.Worms)
+            foreach (Worm worm in State.Worms)
             {
                 if (worm.Pos.Equals(food.Pos))
                 {
@@ -107,5 +115,6 @@ namespace NSU.WormsGame
 
             State.Food.Add(food);
         }
+
     }
 }

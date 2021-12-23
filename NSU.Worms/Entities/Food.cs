@@ -14,33 +14,6 @@ namespace NSU.WormsGame.Entities
         public int HP { get; set; }
 
         private static Random r = new Random();
-        public Food(List<Food> otherFood)
-        {
-            this.HP = 10;
-
-            while (true)
-            {
-                int x = NextNormal();
-                int y = NextNormal();
-
-                bool ok = true;
-
-                foreach (Food food in otherFood)
-                {
-                    if (food.Pos.X.Equals(x) && food.Pos.Y.Equals(y))
-                    {
-                        ok = false;
-                        break;
-                    }
-                }
-
-                if (ok)
-                {
-                    this.Pos = new Point(x, y);
-                    break;
-                }
-            }
-        }
         public static int NextNormal(double mu = 0, double sigma = 5)
 
         {

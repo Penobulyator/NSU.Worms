@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using NSU.WormsGame.Entities;
 using NSU.WormsGame.Entities.Directions;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Text;
 
-namespace NSU.WormsGame.Entities.Worm
+namespace NSU.WormsGame.Services.WormActionGeneratorService
 {
-    public abstract class MovingTowardsPointWorm : AbstactWorm
+    internal class MoveTowardsPointWormActionGenerator
     {
-        protected Point TargetPoint;
-        public MovingTowardsPointWorm(string name, Point pos, int hp) : base(name, pos, hp) { 
-            TargetPoint = pos;
-        }
-        protected WormAction AskToMoveTowardsPoint()
+        public static WormAction AskToMoveTowardsPoint(Point curentPos, Point TargetPoint)
         {
-            if (Pos.Equals(TargetPoint))
+            if (curentPos.Equals(TargetPoint))
             {
                 return new WormAction(null, false);
             }
             else
             {
-                int difX = TargetPoint.X - Pos.X;
-                int difY = TargetPoint.Y - Pos.Y;
+                int difX = TargetPoint.X - curentPos.X;
+                int difY = TargetPoint.Y - curentPos.Y;
                 Direction direction = null;
 
                 if (Math.Abs(difX) > Math.Abs(difY))
