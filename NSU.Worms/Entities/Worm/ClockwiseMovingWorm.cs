@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using NSU.WormsGame.Directions;
 using NSU.WormsGame.Simulation;
+using NSU.WormsGame.Entities.Directions;
 
 namespace NSU.WormsGame.Worms
 {

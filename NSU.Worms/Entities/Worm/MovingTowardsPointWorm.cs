@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using NSU.WormsGame.Directions;
 using NSU.WormsGame.Entities.Worm;
+using NSU.WormsGame.Entities.Directions;
 
 namespace NSU.WormsGame.Worms
 {

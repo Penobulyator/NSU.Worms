@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NSU.WormsGame.Directions;
 using System.IO;
 using System.Drawing;
 using NSU.WormsGame.Simulation;
 using NSU.WormsGame.Entities.Worm;
+using NSU.WormsGame.Entities.Directions;
 
 namespace NSU.WormsGame
 {

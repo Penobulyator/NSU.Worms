@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using NSU.WormsGame.Directions;
 using NSU.WormsGame.Simulation;
+using NSU.WormsGame.Entities.Directions;
 
 namespace NSU.WormsGame.Entities.Worm
 {
