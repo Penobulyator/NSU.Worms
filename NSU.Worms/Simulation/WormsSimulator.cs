@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Drawing;
-using NSU.WormsGame.Simulation;
-using NSU.WormsGame.Entities.Worm;
+﻿using NSU.WormsGame.Entities;
 using NSU.WormsGame.Entities.Directions;
+using NSU.WormsGame.Entities.Worm;
+using NSU.WormsGame.Simulation;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace NSU.WormsGame
 {
@@ -26,35 +23,72 @@ namespace NSU.WormsGame
             for (int i = 0; i < ITERATIONS; i++)
             {
                 callback(State);
-                MoveWorms();
+                PerformWormsActions();
             }
         }
 
-        private void MoveWorms()
+        private void PerformWormsActions()
         {
             foreach (AbstactWorm worm in State.Worms)
             {
-                Direction direction = worm.AskToMove(State);
+                WormAction action = worm.AskToMove(State);
 
-                if (!WormWillCollide(worm, direction))
+                if (action.IsDoNothing())
+                    continue;
+
+                Point nextPoint = action.Direction.getNextPoint(worm.Pos);
+
+                if (State.PointIsWorm(nextPoint))
+                    continue;
+
+                if (action.Reproduce)
                 {
-                    worm.Move(direction);
+                    if (State.PointIsFood(nextPoint))
+                        continue;
+
+                    if (worm.HP > 10)
+                    {
+                        AbstactWorm newWorm = (AbstactWorm)worm.Clone();
+                        newWorm.Pos = nextPoint;
+                        newWorm.HP = 10;
+                        newWorm.Name = GetUniqueWormName(worm.Name);
+                        State.Worms.Add(newWorm);
+
+                        worm.HP -= 10;
+                    }
+                }
+                else
+                {
+                    worm.Move(action.Direction);
+
+                    for (int i = 0; i < State.Food.Count; i++)
+                    {
+                        if (State.Food[i].Equals(worm.Pos))
+                        {
+                            State.Food.RemoveAt(i);
+                            worm.HP += 10;
+                            break;
+                        }
+                    }
                 }
             }
 
         }
 
-        private bool WormWillCollide(AbstactWorm worm, Direction direction)
+        private String GetUniqueWormName(String baseName)
         {
-            Point nextPoint = new Point(worm.Pos.X + direction.getX(), worm.Pos.Y + direction.getY());
+            int tryCount = 0;
 
-            foreach (AbstactWorm otherWorm in State.Worms)
+            while (true)
             {
-                if (!otherWorm.Equals(worm) && otherWorm.Pos.Equals(nextPoint))
-                    return true;
-            }
+                String newName = baseName + tryCount;
+                AbstactWorm worm = State.Worms.Find(worm => worm.Name.Equals(newName));
+                if (worm == null)
+                    return newName;
 
-            return false;
+                tryCount++;
+            }
         }
+
     }
 }

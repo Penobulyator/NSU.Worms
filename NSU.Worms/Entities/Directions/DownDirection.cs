@@ -1,11 +1,10 @@
-﻿using NSU.WormsGame.Entities.Directions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NSU.WormsGame.Directions
+namespace NSU.WormsGame.Entities.Directions
 {
     class DownDirection : Direction
     {

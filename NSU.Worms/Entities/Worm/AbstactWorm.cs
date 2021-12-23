@@ -7,10 +7,10 @@ using NSU.WormsGame.Entities.Directions;
 
 namespace NSU.WormsGame.Entities.Worm
 {
-    public abstract class AbstactWorm
+    public abstract class AbstactWorm : ICloneable
     {
         public Point Pos { get; set; }
-        public string Name { get; }
+        public string Name { get; set; }
 
         public int HP { get; set; }
 
@@ -22,9 +22,14 @@ namespace NSU.WormsGame.Entities.Worm
         }
         public void Move(Direction direction)
         {
-            Pos = new Point(Pos.X + direction.getX(), Pos.Y + direction.getY());
+            Pos = direction.getNextPoint(Pos);
         }
 
-        abstract public Direction AskToMove(GameState state);
+        abstract public WormAction AskToMove(GameState state);
+
+        public object Clone()
+        {
+            return this;
+        }
     }
 }

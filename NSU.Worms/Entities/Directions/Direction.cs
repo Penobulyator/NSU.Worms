@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +9,10 @@ namespace NSU.WormsGame.Entities.Directions
     {
         public int getX();
         public int getY();
+
+        public Point getNextPoint(Point point)
+        {
+            return new Point(point.X + getX(), point.Y + getY());
+        }
     }
 }

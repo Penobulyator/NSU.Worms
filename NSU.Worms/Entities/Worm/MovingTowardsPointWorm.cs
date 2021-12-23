@@ -4,17 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using NSU.WormsGame.Directions;
-using NSU.WormsGame.Entities.Worm;
 using NSU.WormsGame.Entities.Directions;
 
-namespace NSU.WormsGame.Worms
+namespace NSU.WormsGame.Entities.Worm
 {
     public abstract class MovingTowardsPointWorm : AbstactWorm
     {
         protected Point TargetPoint;
         public MovingTowardsPointWorm(string name, Point pos, int hp) : base(name, pos, hp) { }
-        protected Direction AskToMoveTowardsPoint()
+        protected WormAction AskToMoveTowardsPoint()
         {
             if (Pos.Equals(TargetPoint))
             {
@@ -24,15 +22,18 @@ namespace NSU.WormsGame.Worms
             {
                 int difX = TargetPoint.X - Pos.X;
                 int difY = TargetPoint.Y - Pos.Y;
+                Direction direction = null;
 
                 if (Math.Abs(difX) > Math.Abs(difY))
                 {
-                    return difX > 0 ? new RightDirection() : new LeftDirection();
+                    direction = difX > 0 ? new RightDirection() : new LeftDirection();
                 }
                 else
                 {
-                    return difY > 0 ? new UpDirection() : new DownDirection();
+                    direction = difY > 0 ? new UpDirection() : new DownDirection();
                 }
+
+                return new WormAction(direction, false);
             }
         }
     }
