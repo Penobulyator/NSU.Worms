@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NSU.Worms.Worm;
-namespace NSU.Worms
+using NSU.WormsGame.Worms;
+namespace NSU.WormsGame
 {
     internal class Program
     {

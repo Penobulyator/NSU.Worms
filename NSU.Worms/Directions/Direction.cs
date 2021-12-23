@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NSU.Worms.Directions
+namespace NSU.WormsGame.Directions
 {
     public interface Direction
     {

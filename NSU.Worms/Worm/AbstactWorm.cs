@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using NSU.Worms.Directions;
-namespace NSU.Worms.Worm
+using NSU.WormsGame.Directions;
+namespace NSU.WormsGame.Worms
 {
     public abstract class AbstactWorm
     {
