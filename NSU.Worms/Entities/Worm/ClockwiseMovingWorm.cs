@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using NSU.WormsGame.Directions;
+using NSU.Worms.Simulation;
+
 namespace NSU.WormsGame.Worms
 {
     public class ClockwiseMovingWorm : MovingTowardsPointWorm

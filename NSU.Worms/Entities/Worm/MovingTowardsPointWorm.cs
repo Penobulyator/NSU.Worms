@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using NSU.WormsGame.Directions;
+using NSU.Worms.Entities.Worm;
+
 namespace NSU.WormsGame.Worms
 {
     public abstract class MovingTowardsPointWorm : AbstactWorm

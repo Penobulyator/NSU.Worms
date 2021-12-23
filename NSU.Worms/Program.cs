@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NSU.Worms.Entities.Worm;
+using NSU.Worms.Simulation;
 using NSU.WormsGame.Worms;
 namespace NSU.WormsGame
 {

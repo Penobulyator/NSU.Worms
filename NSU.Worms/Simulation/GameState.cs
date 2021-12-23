@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using NSU.WormsGame.Worms;
-using System.Linq;
-namespace NSU.WormsGame
+using NSU.Worms.Entities.Worm;
+
+namespace NSU.Worms.Simulation
 {
     public class GameState
     {
@@ -14,7 +13,7 @@ namespace NSU.WormsGame
         }
         public override string ToString()
         {
-            string wormsStr = String.Join(',', Worms);
+            string wormsStr = string.Join(',', Worms);
             return $"WormsGame:[{wormsStr}]";
         }
     }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NSU.WormsGame.Worms;
 using NSU.WormsGame.Directions;
 using System.IO;
 using System.Drawing;
+using NSU.Worms.Entities.Worm;
+using NSU.Worms.Simulation;
+
 namespace NSU.WormsGame
 {
     public class WormsSimulator

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using NSU.WormsGame.Directions;
-namespace NSU.WormsGame.Worms
+using NSU.Worms.Simulation;
+
+namespace NSU.Worms.Entities.Worm
 {
     public abstract class AbstactWorm
     {
@@ -22,7 +24,7 @@ namespace NSU.WormsGame.Worms
         {
             Pos = new Point(Pos.X + direction.getX(), Pos.Y + direction.getY());
         }
-        
+
         abstract public Direction AskToMove(GameState state);
     }
 }
