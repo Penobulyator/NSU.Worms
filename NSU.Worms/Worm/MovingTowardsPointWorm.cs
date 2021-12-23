@@ -10,8 +10,7 @@ namespace NSU.WormsGame.Worms
     public abstract class MovingTowardsPointWorm : AbstactWorm
     {
         protected Point TargetPoint;
-        public MovingTowardsPointWorm(string name, Point pos) : base(name, pos) { }
-        public MovingTowardsPointWorm(string name) : base(name) { }
+        public MovingTowardsPointWorm(string name, Point pos, int hp) : base(name, pos, hp) { }
         protected Direction AskToMoveTowardsPoint()
         {
             if (Pos.Equals(TargetPoint))

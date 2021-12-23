@@ -10,8 +10,9 @@ namespace NSU.WormsGame.Worms
         public Point Pos { get; set; }
         public string Name { get; }
 
-        public AbstactWorm(string name, Point pos) => (Name, Pos) = (name, pos);
-        public AbstactWorm(string name) : this(name, new Point(0, 0)) { }
+        public int HP { get; set; }
+
+        public AbstactWorm(string name, Point pos, int hp) => (Name, Pos, HP) = (name, pos, hp);
 
         public override string ToString()
         {
