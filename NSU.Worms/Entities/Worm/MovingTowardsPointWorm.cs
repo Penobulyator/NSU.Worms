@@ -28,11 +28,17 @@ namespace NSU.WormsGame.Entities.Worm
 
                 if (Math.Abs(difX) > Math.Abs(difY))
                 {
-                    direction = difX > 0 ? new RightDirection() : new LeftDirection();
+                    if (difX > 0)
+                        direction = new RightDirection();
+                    else
+                        direction = new LeftDirection();
                 }
                 else
                 {
-                    direction = difY > 0 ? new UpDirection() : new DownDirection();
+                    if (difY > 0)
+                        direction = new UpDirection();
+                    else
+                        direction = new DownDirection();
                 }
 
                 return new WormAction(direction, false);
