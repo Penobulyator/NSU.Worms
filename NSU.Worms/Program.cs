@@ -19,9 +19,7 @@ namespace NSU.WormsGame
             WormsSimulator wormsSimulator = new WormsSimulator(game);
             wormsSimulator.Run((gameState) =>
             {
-                String str = gameState.ToString();
-                Console.WriteLine(str);
-                return;
+                Console.WriteLine(gameState.ToString());
             });
         }
     }
