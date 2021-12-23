@@ -12,8 +12,7 @@ namespace NSU.WormsGame
         {
             GameState game = new GameState();
             game.Worms = new List<AbstactWorm> {
-                new ClockwiseMovingWorm("bob", new System.Drawing.Point(5, 5)),
-                new ClockwiseMovingWorm("bib", new System.Drawing.Point(5, 5))
+                new ClockwiseMovingWorm("bob", new System.Drawing.Point(5, 5))
             };
 
             WormsSimulator wormsSimulator = new WormsSimulator(game);
