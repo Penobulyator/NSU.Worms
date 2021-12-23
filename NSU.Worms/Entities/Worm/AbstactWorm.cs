@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using NSU.WormsGame.Directions;
-using NSU.Worms.Simulation;
+using NSU.WormsGame.Simulation;
 
-namespace NSU.Worms.Entities.Worm
+namespace NSU.WormsGame.Entities.Worm
 {
     public abstract class AbstactWorm
     {
