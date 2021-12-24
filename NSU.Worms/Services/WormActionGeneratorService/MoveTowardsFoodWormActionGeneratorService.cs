@@ -1,5 +1,4 @@
 ﻿using NSU.WormsGame.Entities;
-using NSU.WormsGame.Simulation;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

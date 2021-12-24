@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSU.WormsGame", "NSU.Worms\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSU.WormsGame.Tests", "NSU.WormsGame.Tests\NSU.WormsGame.Tests.csproj", "{3CEC91E9-C6A5-4913-B497-3E0FDEFB0479}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSU.WormsGame.Main", "NSU.WormsGame.Main\NSU.WormsGame.Main.csproj", "{3DF587F6-FF2D-4F46-B5AB-81802F47B62E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{3CEC91E9-C6A5-4913-B497-3E0FDEFB0479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CEC91E9-C6A5-4913-B497-3E0FDEFB0479}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CEC91E9-C6A5-4913-B497-3E0FDEFB0479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF587F6-FF2D-4F46-B5AB-81802F47B62E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF587F6-FF2D-4F46-B5AB-81802F47B62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF587F6-FF2D-4F46-B5AB-81802F47B62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF587F6-FF2D-4F46-B5AB-81802F47B62E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

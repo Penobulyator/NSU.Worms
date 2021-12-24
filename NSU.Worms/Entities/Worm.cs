@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using NSU.WormsGame.Simulation;
 using NSU.WormsGame.Entities.Directions;
 
 namespace NSU.WormsGame.Entities
@@ -27,7 +26,7 @@ namespace NSU.WormsGame.Entities
 
         public object Clone()
         {
-            return this;
+            return this.MemberwiseClone();
         }
     }
 }

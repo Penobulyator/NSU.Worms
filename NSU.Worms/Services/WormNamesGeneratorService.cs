@@ -8,7 +8,7 @@ namespace NSU.WormsGame.Services
     {
         public string GenerateWormName(string baseName, List<Worm> worms);
     }
-    internal class WormNamesGeneratorService : IWormNamesGeneratorService
+    public class WormNamesGeneratorService : IWormNamesGeneratorService
     {
         public string GenerateWormName(string baseName, List<Worm> worms)
         {

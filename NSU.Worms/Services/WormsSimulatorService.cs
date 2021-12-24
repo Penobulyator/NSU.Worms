@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
 using NSU.WormsGame.Entities;
-using NSU.WormsGame.Simulation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,9 +11,9 @@ using System.Drawing;
 
 namespace NSU.WormsGame.Services
 {
-    internal class WormsSimulatorService : IHostedService
+    public class WormsSimulatorService : IHostedService
     {
-        private GameState State;
+        public GameState State { get; set; }
         private bool Running = true;
         private IServiceProvider ServiceProvider;
 
@@ -52,8 +51,10 @@ namespace NSU.WormsGame.Services
             State.Worms = new List<Worm> { new Worm("bob", new Point(0, 0), 20) };
         }
 
-        private void PerformWormsActions()
+        public void PerformWormsActions()
         {
+            List<Worm> wormsToAdd = new List<Worm>();
+
             foreach (Worm worm in State.Worms)
             {
                 WormAction action= ServiceProvider.GetService<IWormActionGeneratorService>().GenerateWormAction(worm, State);
@@ -73,11 +74,9 @@ namespace NSU.WormsGame.Services
 
                     if (worm.HP > 10)
                     {
-                        Worm newWorm = (Worm)worm.Clone();
-                        newWorm.Pos = nextPoint;
-                        newWorm.HP = 10;
-                        newWorm.Name = ServiceProvider.GetService<IWormNamesGeneratorService>().GenerateWormName(worm.Name, State.Worms);
-                        State.Worms.Add(newWorm);
+                        string newWormName = ServiceProvider.GetService<IWormNamesGeneratorService>().GenerateWormName(worm.Name, State.Worms);
+                        Worm newWorm = new Worm(newWormName, nextPoint, 10);
+                        wormsToAdd.Add(newWorm);
 
                         worm.HP -= 10;
                     }
@@ -92,6 +91,8 @@ namespace NSU.WormsGame.Services
                 }
             }
 
+            State.Worms.AddRange(wormsToAdd);
+
         }
 
         private void ReduceAndCheckHp()
@@ -100,7 +101,7 @@ namespace NSU.WormsGame.Services
             State.Worms.RemoveAll((worm) => --worm.HP == 0);
         }
 
-        private void PlaceFood()
+        public void PlaceFood()
         {
             Food food = ServiceProvider.GetService<IFoodGeneratorService>().GenerateFood(State.Food);
 

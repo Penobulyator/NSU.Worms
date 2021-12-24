@@ -9,7 +9,7 @@ namespace NSU.WormsGame.Services
     {
         public Food GenerateFood(List<Food> otherFood);
     }
-    internal class FoodGeneratorService : IFoodGeneratorService
+    public class FoodGeneratorService : IFoodGeneratorService
     {
         private Random r = new Random();
         public Food GenerateFood(List<Food> otherFood)

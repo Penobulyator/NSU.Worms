@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NSU.WormsGame.Entities.Directions
 {
-    class RightDirection : Direction
+    public class RightDirection : Direction
     {
         public int getX()
         {

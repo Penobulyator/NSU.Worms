@@ -1,4 +1,4 @@
-﻿using NSU.WormsGame.Simulation;
+﻿using NSU.WormsGame.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +9,7 @@ namespace NSU.WormsGame.Services
     {
         public void WriteState(GameState state);
     }
-    internal class GameStateWriterService : IGameStateWriterService
+    public class GameStateWriterService : IGameStateWriterService
     {
         public void WriteState(GameState state)
         {

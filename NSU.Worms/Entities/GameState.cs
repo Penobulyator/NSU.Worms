@@ -1,8 +1,7 @@
 ﻿using System.Drawing;
 using System.Collections.Generic;
-using NSU.WormsGame.Entities;
 
-namespace NSU.WormsGame.Simulation
+namespace NSU.WormsGame.Entities
 {
     public class GameState
     {
