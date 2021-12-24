@@ -20,10 +20,10 @@ namespace NSU.WormsGame.Main
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<WormsSimulatorService>();
-                    services.AddScoped<IFoodGeneratorService, FoodGeneratorService>();
-                    services.AddScoped<IWormNamesGeneratorService, WormNamesGeneratorService>();
-                    services.AddScoped<IWormActionGeneratorService, MoveTorawdsFoodWormActionGeneratorService>();
-                    services.AddScoped<IGameStateWriterService, GameStateWriterService>();
+                    services.AddSingleton<IFoodGeneratorService, FoodGeneratorService>();
+                    services.AddSingleton<IWormNamesGeneratorService, WormNamesGeneratorService>();
+                    services.AddSingleton<IWormActionGeneratorService, MoveTorawdsFoodWormActionGeneratorService>();
+                    services.AddSingleton<IGameStateWriterService, GameStateWriterService>();
                 });
 
         }
